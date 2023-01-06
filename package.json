@@ -1,0 +1,16 @@
+{
+    "name": "nodeswitch",
+    "version": "1.0.0",
+    "description": "Node version switcher",
+    "scripts": {
+        "preinstall": "node scripts\\preinstall.js",
+        "postinstall": "scripts\\postinstall.cmd"
+    },
+    "author": "alexsch01",
+    "license": "MIT",
+    "keywords": [
+        "node",
+        "version",
+        "switcher"
+    ]
+}
