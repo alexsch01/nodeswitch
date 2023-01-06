@@ -1,6 +1,6 @@
 {
     "name": "nodeswitch",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Node version switcher",
     "scripts": {
         "preinstall": "node scripts\\preinstall.js",
