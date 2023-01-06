@@ -1,9 +1,9 @@
 {
     "name": "nodeswitch",
-    "version": "1.1.0",
-    "description": "Node version switcher",
+    "version": "1.2.0",
+    "description": "Node version switcher for Microsoft Windows x64",
     "scripts": {
-        "preinstall": "node scripts\\preinstall.js",
+        "preinstall": "node scripts/preinstall.js",
         "postinstall": "scripts\\postinstall.cmd"
     },
     "author": "alexsch01",
@@ -11,6 +11,9 @@
     "keywords": [
         "node",
         "version",
-        "switcher"
+        "switcher",
+        "microsoft",
+        "windows",
+        "x64"
     ]
 }
