@@ -20,11 +20,25 @@ if ( $nodeswitch1stParameter -ne $null ) {
                 } else {
                     if ( Test-Path -Path $env:AppData\nodeswitch\$nodeswitch2ndParameter ) {
                         if ( $global:nodeswitchDefaultPATH -eq $null ) {
-                            $global:nodeswitchDefaultPATH = $env:Path
-                            $env:Path = cmd /c "echo %PATH:C:\Program Files\nodejs\;=%;$env:AppData\nodeswitch\$nodeswitch2ndParameter"
+                            if ( $env:path -like "*C:\Program Files\nodejs\;*" ) {
+                                $global:nodeswitchDefaultPATH = $env:Path
+                                $env:Path = cmd /c "echo %PATH:C:\Program Files\nodejs\;=%;$env:AppData\nodeswitch\$nodeswitch2ndParameter"
+                            } elseif ( $env:path -like "*C:\Program Files\nodejs\*" ) {
+                                $global:nodeswitchDefaultPATH = $env:Path
+                                $env:Path = cmd /c "echo %PATH:C:\Program Files\nodejs\=%$env:AppData\nodeswitch\$nodeswitch2ndParameter"
+                            } else {
+                                echo "System environment variable Path doesn't include C:\Program Files\nodejs\"
+                            }
                         } else {
-                            $env:Path = echo $global:nodeswitchDefaultPATH
-                            $env:Path = cmd /c "echo %PATH:C:\Program Files\nodejs\;=%;$env:AppData\nodeswitch\$nodeswitch2ndParameter"
+                            if ( $global:nodeswitchDefaultPATH -like "*C:\Program Files\nodejs\;*" ) {
+                                $env:Path = echo $global:nodeswitchDefaultPATH
+                                $env:Path = cmd /c "echo %PATH:C:\Program Files\nodejs\;=%;$env:AppData\nodeswitch\$nodeswitch2ndParameter"
+                            } elseif ( $global:nodeswitchDefaultPATH -like "*C:\Program Files\nodejs\*" ) {
+                                $env:Path = echo $global:nodeswitchDefaultPATH
+                                $env:Path = cmd /c "echo %PATH:C:\Program Files\nodejs\=%$env:AppData\nodeswitch\$nodeswitch2ndParameter"
+                            } else {
+                                echo "System environment variable Path doesn't include C:\Program Files\nodejs\"
+                            }
                         }
                     } else {
                         echo "Node version not installed"
