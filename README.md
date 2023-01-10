@@ -39,6 +39,7 @@ nodeswitch list
 npm uninstall -g nodeswitch
 
 *****
-In your "C:\Users\YOUR_USERNAME\AppData\Roaming\npm" folder, delete 2 files: nodeswitch.cmd and nodeswitch.ps1
+In the "C:\Users\YOUR_USERNAME\AppData\Roaming\npm" folder, delete 2 files: nodeswitch.cmd and nodeswitch.ps1
+In the "C:\Users\YOUR_USERNAME\.bash_profile" file, remove the line [alias nodeswitch="source nodeswitch"]
 *****
 ```
