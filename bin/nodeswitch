@@ -1,1 +1,1 @@
-source nodeswitch.sh "$@"
+(return 0 2>/dev/null) && source nodeswitch.sh "$@" || echo "You need to relaunch Git Bash in order to use nodeswitch"
