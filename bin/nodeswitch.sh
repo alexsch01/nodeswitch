@@ -21,27 +21,10 @@ then
             then
                 if [ -z "$nodeswitchDefaultPATH" ]
                 then
-                    if [ ! "${PATH//\/c\/Program Files\/nodejs:/}" == "$PATH" ]
-                    then
-                        export nodeswitchDefaultPATH=$PATH
-                        export PATH=${PATH//\/c\/Program Files\/nodejs:/}:$APPDATA/nodeswitch/$2
-                    elif [ ! "${PATH//\/c\/Program Files\/nodejs/}" == "$PATH" ]
-                    then
-                        export nodeswitchDefaultPATH=$PATH
-                        export PATH=${PATH//\/c\/Program Files\/nodejs/}$APPDATA/nodeswitch/$2
-                    else
-                        echo "System environment variable Path doesn't include /c/Program Files/nodejs"
-                    fi
+		    export nodeswitchDefaultPATH=$PATH
+                    export PATH=$APPDATA/nodeswitch/$2:$PATH
                 else
-                    if [ ! "${nodeswitchDefaultPATH//\/c\/Program Files\/nodejs:/}" == "$nodeswitchDefaultPATH" ]
-                    then
-                        export PATH=${nodeswitchDefaultPATH//\/c\/Program Files\/nodejs:/}:$APPDATA/nodeswitch/$2
-                    elif [ ! "${nodeswitchDefaultPATH//\/c\/Program Files\/nodejs/}" == "$nodeswitchDefaultPATH" ]
-                    then
-                        export PATH=${nodeswitchDefaultPATH//\/c\/Program Files\/nodejs/}$APPDATA/nodeswitch/$2
-                    else
-                        echo "System environment variable Path doesn't include /c/Program Files/nodejs"
-                    fi
+		    export PATH=$APPDATA/nodeswitch/$2:$nodeswitchDefaultPATH
                 fi
             else
                 echo "Node version not installed"
