@@ -56,3 +56,5 @@ if not "%1" == "" (
 ) else (
     echo Incorrect command
 )
+
+@echo on
