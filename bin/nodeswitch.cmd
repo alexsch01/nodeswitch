@@ -19,25 +19,10 @@ if not "%1" == "" (
                 ) else (
                     if exist %AppData%\nodeswitch\%2 (
                         if not defined nodeswitchDefaultPATH (
-                            if not "%PATH:C:\Program Files\nodejs\;=%" == "%PATH%" (
-                                set "nodeswitchDefaultPATH=%PATH%"
-                                set "nodeswitchTypePATH=1"
-                                set "PATH=%PATH:C:\Program Files\nodejs\;=%;%AppData%\nodeswitch\%2"
-                            ) else if not "%PATH:C:\Program Files\nodejs\=%" == "%PATH%" (
-                                set "nodeswitchDefaultPATH=%PATH%"
-                                set "nodeswitchTypePATH=2"
-                                set "PATH=%PATH:C:\Program Files\nodejs\=%%AppData%\nodeswitch\%2"
-                            ) else (
-                                echo System environment variable Path doesn't include C:\Program Files\nodejs\
-                            )
+			    set "nodeswitchDefaultPATH=%PATH%"
+			    set "PATH=%AppData%\nodeswitch\%2;%PATH%"
                         ) else (
-                            if "%nodeswitchTypePATH%" == "1" (
-                                set "PATH=%nodeswitchDefaultPATH:C:\Program Files\nodejs\;=%;%AppData%\nodeswitch\%2"
-                            ) else if "%nodeswitchTypePATH%" == "2" (
-                                set "PATH=%nodeswitchDefaultPATH:C:\Program Files\nodejs\=%%AppData%\nodeswitch\%2"
-                            ) else (
-                                echo System environment variable Path doesn't include C:\Program Files\nodejs\
-                            )
+			    set "PATH=%AppData%\nodeswitch\%2;%nodeswitchDefaultPATH%"
                         )
                     ) else (
                         echo Node version not installed
