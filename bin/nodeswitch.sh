@@ -54,7 +54,7 @@ elif [ "$#" = "1" ]
 then
     if [ "$1" = "list" ]
     then
-        dir $APPDATA/nodeswitch
+        dir -1 $APPDATA/nodeswitch
     else
         echo "Incorrect command"
     fi
