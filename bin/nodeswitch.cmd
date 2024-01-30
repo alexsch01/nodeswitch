@@ -49,6 +49,8 @@ if not "%1" == "" (
     ) else (
         if "%1" == "list" (
             dir /b %AppData%\nodeswitch
+        ) else if "%1" == "path" (
+            echo %AppData%\nodeswitch
         ) else (
             echo Incorrect command
         )
