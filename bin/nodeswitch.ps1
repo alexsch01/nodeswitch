@@ -50,6 +50,8 @@ if ( $nodeswitch1stParameter -ne $null ) {
     } else {
         if ( $nodeswitch1stParameter -eq "list" ) {
             dir -n $env:AppData\nodeswitch 
+        } elseif ( $nodeswitch1stParameter -eq "path" ) {
+            echo "$env:AppData\nodeswitch"
         } else {
             echo "Incorrect command"
         }
