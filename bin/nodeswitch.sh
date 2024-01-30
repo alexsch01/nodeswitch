@@ -61,6 +61,9 @@ then
         if [ "$1" = "list" ]
         then
             dir -1 $APPDATA/nodeswitch
+        elif [ "$1" = "path" ]
+        then
+            echo "$APPDATA\nodeswitch"
         else
             echo "Incorrect command"
         fi
