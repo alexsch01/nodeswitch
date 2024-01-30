@@ -31,6 +31,8 @@ nodeswitch use 18.13.0
 nodeswitch use default
 
 nodeswitch list
+
+nodeswitch path
 ```
 
 #### How To Uninstall
