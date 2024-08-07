@@ -1,6 +1,6 @@
 {
     "name": "nodeswitch",
-    "version": "1.8.0",
+    "version": "1.9.0",
     "description": "Node version switcher for Microsoft Windows x64",
     "scripts": {
         "preinstall": "node scripts/preinstall.js",
