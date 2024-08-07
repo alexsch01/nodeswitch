@@ -44,7 +44,24 @@ then
                     if [ $? -eq 0 ]
                     then
                         curl -s -o $APPDATA/nodeswitch/$2.zip https://nodejs.org/download/release/v$2/node-v$2-win-x64.zip > /dev/null
+
+                        if [ $? -ne 0 ]
+                        then
+                            rm $APPDATA/nodeswitch/$2.zip
+                            echo "Node version not created"
+                            exit
+                        fi
+
                         unzip -d $APPDATA/nodeswitch -o $APPDATA/nodeswitch/$2.zip > /dev/null
+
+                        if [ $? -ne 0 ]
+                        then
+                            rm $APPDATA/nodeswitch/$2.zip
+                            rm -rf $APPDATA/nodeswitch/node-v$2-win-x64
+                            echo "Node version not created"
+                            exit
+                        fi
+
                         rm $APPDATA/nodeswitch/$2.zip
                         mv $APPDATA/nodeswitch/node-v$2-win-x64 $APPDATA/nodeswitch/$2 > /dev/null
                     else

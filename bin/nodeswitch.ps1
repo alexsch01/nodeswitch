@@ -34,7 +34,22 @@ if ( $nodeswitch1stParameter -ne $null ) {
                     cmd /c "curl -f https://nodejs.org/download/release/v$nodeswitch2ndParameter > nul 2>&1"
                     if ( $LASTEXITCODE -eq 0 ) {
                         cmd /c "curl -s -o $env:AppData\nodeswitch\$nodeswitch2ndParameter.zip https://nodejs.org/download/release/v$nodeswitch2ndParameter/node-v$nodeswitch2ndParameter-win-x64.zip > nul"
+
+                        if ( $LASTEXITCODE -ne 0 ) {
+                            del $env:AppData\nodeswitch\$nodeswitch2ndParameter.zip
+                            echo "Node version not created"
+                            exit
+                        }
+
                         tar -xf $env:AppData\nodeswitch\$nodeswitch2ndParameter.zip -C $env:AppData\nodeswitch
+
+                        if ( $LASTEXITCODE -ne 0 ) {
+                            del $env:AppData\nodeswitch\$nodeswitch2ndParameter.zip
+                            Remove-Item -Recurse $env:AppData\nodeswitch\node-v$nodeswitch2ndParameter-win-x64
+                            echo "Node version not created"
+                            exit
+                        }
+
                         del $env:AppData\nodeswitch\$nodeswitch2ndParameter.zip
                         cmd /c "move $env:AppData\nodeswitch\node-v$nodeswitch2ndParameter-win-x64 $env:AppData\nodeswitch\$nodeswitch2ndParameter > nul"
                     } else {
