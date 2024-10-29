@@ -66,6 +66,8 @@ if not "%1" == "" (
             dir /b %AppData%\nodeswitch
         ) else if "%1" == "path" (
             echo %AppData%\nodeswitch
+        ) else if "%1" == "pathopen" (
+            powershell explorer "$(nodeswitch path)"
         ) else (
             echo Incorrect command
         )
