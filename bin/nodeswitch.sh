@@ -81,6 +81,9 @@ then
         elif [ "$1" = "path" ]
         then
             echo "$APPDATA\nodeswitch"
+        elif [ "$1" = "pathopen" ]
+        then
+            start explorer $(nodeswitch path)
         else
             echo "Incorrect command"
         fi
