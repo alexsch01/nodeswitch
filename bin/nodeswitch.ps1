@@ -67,6 +67,8 @@ if ( $nodeswitch1stParameter -ne $null ) {
             dir -n $env:AppData\nodeswitch 
         } elseif ( $nodeswitch1stParameter -eq "path" ) {
             echo "$env:AppData\nodeswitch"
+        } elseif ( $nodeswitch1stParameter -eq "pathopen" ) {
+            explorer $(nodeswitch path)
         } else {
             echo "Incorrect command"
         }
