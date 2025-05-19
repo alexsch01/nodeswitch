@@ -1,4 +1,5 @@
 @echo off
+setlocal ENABLEDELAYEDEXPANSION
 
 if not "%1" == "" (
     if not "%2" == "" (
@@ -31,10 +32,10 @@ if not "%1" == "" (
             ) else if "%1" == "add" (
                 if not exist %AppData%\nodeswitch\%2 (
                     curl -f https://nodejs.org/download/release/v%2/ > nul 2>&1
-                    if %ERRORLEVEL% equ 0 (
+                    if !ERRORLEVEL! equ 0 (
                         curl -s -o %AppData%\nodeswitch\%2.zip https://nodejs.org/download/release/v%2/node-v%2-win-x64.zip > nul
 
-                        if not %ERRORLEVEL% equ 0 (
+                        if not !ERRORLEVEL! equ 0 (
                             del %AppData%\nodeswitch\%2.zip
                             echo Node version not created
                             exit
@@ -42,7 +43,7 @@ if not "%1" == "" (
 
                         tar -xf %AppData%\nodeswitch\%2.zip -C %AppData%\nodeswitch
 
-                        if not %ERRORLEVEL% equ 0 (
+                        if not !ERRORLEVEL! equ 0 (
                             del %AppData%\nodeswitch\%2.zip
                             rd /s /q %AppData%\nodeswitch\node-v%2-win-x64
                             echo Node version not created
