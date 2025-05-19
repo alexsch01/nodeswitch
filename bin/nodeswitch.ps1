@@ -31,7 +31,7 @@ if ( $nodeswitch1stParameter -ne $null ) {
                 }
             } elseif ( $nodeswitch1stParameter -eq "add" ) {
                 if ( -not ( Test-Path -Path $env:AppData\nodeswitch\$nodeswitch2ndParameter ) ) {
-                    cmd /c "curl -f https://nodejs.org/download/release/v$nodeswitch2ndParameter > nul 2>&1"
+                    cmd /c "curl -f https://nodejs.org/download/release/v$nodeswitch2ndParameter/ > nul 2>&1"
                     if ( $LASTEXITCODE -eq 0 ) {
                         cmd /c "curl -s -o $env:AppData\nodeswitch\$nodeswitch2ndParameter.zip https://nodejs.org/download/release/v$nodeswitch2ndParameter/node-v$nodeswitch2ndParameter-win-x64.zip > nul"
 
