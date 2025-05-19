@@ -40,7 +40,7 @@ then
             then
                 if [ ! -d "$APPDATA/nodeswitch/$2" ]
                 then
-                    curl -f https://nodejs.org/download/release/v$2 &>/dev/null
+                    curl -f https://nodejs.org/download/release/v$2/ &>/dev/null
                     if [ $? -eq 0 ]
                     then
                         curl -s -o $APPDATA/nodeswitch/$2.zip https://nodejs.org/download/release/v$2/node-v$2-win-x64.zip > /dev/null
