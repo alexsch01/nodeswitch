@@ -73,4 +73,3 @@ if [ "$1" != "" ]; then
 else
     echo "Incorrect command"
 fi
-
