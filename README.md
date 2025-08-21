@@ -31,9 +31,7 @@ nodeswitch use 18.13.0
 nodeswitch use default
 
 nodeswitch list
-
 nodeswitch path
-nodeswitch pathopen
 ```
 
 #### How To Uninstall
