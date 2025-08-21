@@ -1,34 +1,24 @@
-nodeswitchAPPDATA=$(cygpath -u $nodeswitchAPPDATA)
+nodeswitchAPPDATA=$(cygpath -u $APPDATA)
 
-if [ "$1" != "" ]
-then
-    if [ "$2" != "" ]
-    then
-        if [ "$3" != "" ]
-        then
+if [ "$1" != "" ]; then
+    if [ "$2" != "" ]; then
+        if [ "$3" != "" ]; then
             echo "Incorrect command"
         else
-            if [ "$1" = "remove" ]
-            then
-                if [ -d "$nodeswitchAPPDATA/nodeswitch/$2" ]
-                then
+            if [ "$1" = "remove" ]; then
+                if [ -d "$nodeswitchAPPDATA/nodeswitch/$2" ]; then
                     rm -rf $nodeswitchAPPDATA/nodeswitch/$2
                 else
                     echo "Node version not installed"
                 fi
-            elif [ "$1" = "use" ]
-            then
-                if [ "$2" = "default" ]
-                then
-                    if [ ! -z "$nodeswitchDefaultPATH" ]
-                    then
+            elif [ "$1" = "use" ]; then
+                if [ "$2" = "default" ]; then
+                    if [ ! -z "$nodeswitchDefaultPATH" ]; then
                         export PATH=$nodeswitchDefaultPATH
                     fi
                 else
-                    if [ -d "$nodeswitchAPPDATA/nodeswitch/$2" ]
-                    then
-                        if [ -z "$nodeswitchDefaultPATH" ]
-                        then
+                    if [ -d "$nodeswitchAPPDATA/nodeswitch/$2" ]; then
+                        if [ -z "$nodeswitchDefaultPATH" ]; then
                             export nodeswitchDefaultPATH=$PATH
                             export PATH=$nodeswitchAPPDATA/nodeswitch/$2:$PATH
                         else
@@ -38,17 +28,13 @@ then
                         echo "Node version not installed"
                     fi
                 fi
-            elif [ "$1" = "add" ]
-            then
-                if [ ! -d "$nodeswitchAPPDATA/nodeswitch/$2" ]
-                then
+            elif [ "$1" = "add" ]; then
+                if [ ! -d "$nodeswitchAPPDATA/nodeswitch/$2" ]; then
                     curl -f https://nodejs.org/download/release/v$2/ &>/dev/null
-                    if [ $? -eq 0 ]
-                    then
+                    if [ $? -eq 0 ]; then
                         curl -s -o $nodeswitchAPPDATA/nodeswitch/$2.zip https://nodejs.org/download/release/v$2/node-v$2-win-x64.zip > /dev/null
 
-                        if [ $? -ne 0 ]
-                        then
+                        if [ $? -ne 0 ]; then
                             rm $nodeswitchAPPDATA/nodeswitch/$2.zip
                             echo "Node version not created"
                             exit
@@ -56,8 +42,7 @@ then
 
                         unzip -d $nodeswitchAPPDATA/nodeswitch -o $nodeswitchAPPDATA/nodeswitch/$2.zip > /dev/null
 
-                        if [ $? -ne 0 ]
-                        then
+                        if [ $? -ne 0 ]; then
                             rm $nodeswitchAPPDATA/nodeswitch/$2.zip
                             rm -rf $nodeswitchAPPDATA/nodeswitch/node-v$2-win-x64
                             echo "Node version not created"
@@ -77,15 +62,10 @@ then
             fi
         fi
     else
-        if [ "$1" = "list" ]
-        then
+        if [ "$1" = "list" ]; then
             dir -1 $nodeswitchAPPDATA/nodeswitch
-        elif [ "$1" = "path" ]
-        then
-            echo "$nodeswitchAPPDATA\nodeswitch"
-        elif [ "$1" = "pathopen" ]
-        then
-            start explorer $(nodeswitch path)
+        elif [ "$1" = "path" ]; then
+            echo "$nodeswitchAPPDATA/nodeswitch"
         else
             echo "Incorrect command"
         fi
