@@ -74,4 +74,3 @@ if ( $nodeswitch1stParameter -ne $null ) {
 } else {
     echo "Incorrect command"
 }
-
