@@ -4,6 +4,10 @@ Node version switcher for Microsoft Windows x64
 
 https://github.com/alexsch01/nodeswitch
 
+#### Linux Version
+
+https://github.com/alexsch01/nodeswitch-linux
+
 <br>
 
 #### How To Install
