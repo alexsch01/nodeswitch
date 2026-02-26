@@ -37,7 +37,7 @@ if [ "$1" != "" ]; then
                         if [ $? -ne 0 ]; then
                             rm $nodeswitchAPPDATA/nodeswitch/$2.zip
                             echo "Node version not created"
-                            return 1
+                            return
                         fi
 
                         unzip -d $nodeswitchAPPDATA/nodeswitch -o $nodeswitchAPPDATA/nodeswitch/$2.zip > /dev/null
@@ -46,7 +46,7 @@ if [ "$1" != "" ]; then
                             rm $nodeswitchAPPDATA/nodeswitch/$2.zip
                             rm -rf $nodeswitchAPPDATA/nodeswitch/node-v$2-win-x64
                             echo "Node version not created"
-                            return 1
+                            return
                         fi
 
                         rm $nodeswitchAPPDATA/nodeswitch/$2.zip
